@@ -29,4 +29,26 @@ class CoordinatesTest {
         assertFalse(coordinates3.insideBoundary(3, 3));
         assertFalse(coordinates4.insideBoundary(3, 3));
     }
+
+    @Test
+    void shouldReturnTrueIfItIsALeftDiagonalElement() {
+        Coordinates coordinates1 = new Coordinates(1, 1);
+        Coordinates coordinates2 = new Coordinates(2, 2);
+        Coordinates coordinates3 = new Coordinates(3, 3);
+
+        assertTrue(coordinates1.isLeftDiagonalElement(3, 3));
+        assertTrue(coordinates2.isLeftDiagonalElement(3, 3));
+        assertTrue(coordinates3.isLeftDiagonalElement(3, 3));
+    }
+
+    @Test
+    void shouldReturnFalseIfItIsNotALeftDiagonalElement() {
+        Coordinates coordinates1 = new Coordinates(1, 2);
+        Coordinates coordinates2 = new Coordinates(2, 3);
+        Coordinates coordinates3 = new Coordinates(1, 3);
+
+        assertFalse(coordinates1.isLeftDiagonalElement(3, 3));
+        assertFalse(coordinates2.isLeftDiagonalElement(3, 3));
+        assertFalse(coordinates3.isLeftDiagonalElement(3, 3));
+    }
 }

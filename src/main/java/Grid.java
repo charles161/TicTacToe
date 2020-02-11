@@ -29,11 +29,11 @@ public class Grid {
         for (Map.Entry<Coordinates, Mark> cell : cells.entrySet()) {
             Coordinates coordinates = cell.getKey();
             Mark mark = cell.getValue();
-            if (coordinates.equals(new Coordinates(1, 1)) && mark.equals(checkMark)) {
+            if (coordinates.isLeftDiagonalElement(rows,columns) && mark.equals(checkMark)) {
                 ++checked;
-            } else if (coordinates.equals(new Coordinates(2, 2)) && mark.equals(checkMark)) {
+            } else if (coordinates.isLeftDiagonalElement(rows,columns) && mark.equals(checkMark)) {
                 ++checked;
-            } else if (coordinates.equals(new Coordinates(3, 3)) && mark.equals(checkMark)) {
+            } else if (coordinates.isLeftDiagonalElement(rows,columns) && mark.equals(checkMark)) {
                 ++checked;
             }
         }

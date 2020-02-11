@@ -26,4 +26,8 @@ public class Coordinates {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    public boolean isLeftDiagonalElement(int rows, int columns) {
+        return (x==1 && y==1) || (x==rows-1 && y==columns-1) || (x==rows && y==columns);
+    }
 }
