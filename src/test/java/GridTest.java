@@ -37,4 +37,28 @@ class GridTest {
         assertThrows(CoordinateAlreadyMarkedException.class, () -> grid.mark(Mark.O, new Coordinates(2, 2)));
     }
 
+    @Test
+    void shouldReturnTrueIfCoordinatesAreMarkedDiagonallyFromLeftWithTheMarkX() throws BoundaryExceededException, CoordinateAlreadyMarkedException {
+        Grid grid = new Grid(3,3);
+
+        grid.mark(Mark.X, new Coordinates(1, 1));
+        grid.mark(Mark.X, new Coordinates(2, 2));
+        grid.mark(Mark.X, new Coordinates(3, 3));
+
+        assertTrue(grid.isMarkedDiagonally(Mark.X));
+    }
+
+    @Test
+    void shouldReturnFalseIfCoordinatesAreNotMarkedDiagonallyFromLeftWithTheMarkX() throws BoundaryExceededException, CoordinateAlreadyMarkedException {
+        Grid grid = new Grid(3,3);
+
+        grid.mark(Mark.X, new Coordinates(1, 1));
+        grid.mark(Mark.X, new Coordinates(1, 2));
+        grid.mark(Mark.X, new Coordinates(3, 3));
+
+        assertFalse(grid.isMarkedDiagonally(Mark.X));
+    }
+
+
+
 }
