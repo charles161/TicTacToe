@@ -1,4 +1,5 @@
 import Exceptions.BoundaryExceededException;
+import Exceptions.CoordinateAlreadyMarkedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,4 +27,14 @@ class GridTest {
         Grid grid = new Grid(3, 3);
         assertThrows(BoundaryExceededException.class, () -> grid.mark(Mark.X, new Coordinates(0, 0)));
     }
+
+    @Test
+    void shouldThrowExceptionWhenMarkedAgainWithTheSameCoordinate() throws BoundaryExceededException, CoordinateAlreadyMarkedException {
+        Grid grid = new Grid(3, 3);
+
+        grid.mark(Mark.X, new Coordinates(2, 2));
+
+        assertThrows(CoordinateAlreadyMarkedException.class, () -> grid.mark(Mark.O, new Coordinates(2, 2)));
+    }
+
 }
