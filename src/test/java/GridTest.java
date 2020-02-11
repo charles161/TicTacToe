@@ -54,7 +54,7 @@ class GridTest {
 
         grid.mark(Mark.X, new Coordinates(1, 1));
         grid.mark(Mark.X, new Coordinates(1, 2));
-        grid.mark(Mark.X, new Coordinates(3, 3));
+        grid.mark(Mark.X, new Coordinates(3, 2));
 
         assertFalse(grid.isMarkedDiagonally(Mark.X));
     }

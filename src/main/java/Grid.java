@@ -25,21 +25,15 @@ public class Grid {
 
 
     public boolean isMarkedDiagonally(Mark checkMark) {
-        int checked = 0;
-        for (Map.Entry<Coordinates, Mark> cell : cells.entrySet()) {
-            Coordinates coordinates = cell.getKey();
-            Mark mark = cell.getValue();
-            if (coordinates.isLeftDiagonalElement(rows,columns) && mark.equals(checkMark)) {
-                ++checked;
-            } else if (coordinates.isLeftDiagonalElement(rows,columns) && mark.equals(checkMark)) {
-                ++checked;
-            } else if (coordinates.isLeftDiagonalElement(rows,columns) && mark.equals(checkMark)) {
-                ++checked;
+        boolean isDiagonal = true;
+        for (int i = 1; i <= rows; i++) {
+            if (cells.containsKey(new Coordinates(i, i)))
+                isDiagonal = cells.get(new Coordinates(i, i)).equals(checkMark) && isDiagonal;
+            else {
+                isDiagonal = false;
+                break;
             }
         }
-
-        if (checked == 3)
-            return true;
-        return false;
+        return isDiagonal;
     }
 }
